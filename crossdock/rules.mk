@@ -10,6 +10,9 @@ crossdock:
 	docker-compose -f $(JAEGER_COMPOSE_YAML) -f $(XDOCK_YAML) kill
 	docker-compose -f $(JAEGER_COMPOSE_YAML) -f $(XDOCK_YAML) rm -f test_driver
 	docker-compose -f $(JAEGER_COMPOSE_YAML) -f $(XDOCK_YAML) run crossdock 2>&1 | tee run-crossdock.log
+	echo "CHECKING THE LOGS:"
+	docker-compose -f $(JAEGER_COMPOSE_YAML) -f $(XDOCK_YAML) logs
+	echo "CROSSDOCK FINISHED"
 	grep 'Tests passed!' run-crossdock.log
 
 .PHONE: crossdock-logs

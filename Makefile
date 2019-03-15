@@ -263,6 +263,7 @@ build-crossdock-ui-placeholder:
 .PHONY: build-crossdock
 build-crossdock: build-crossdock-ui-placeholder docker-no-ui
 	make crossdock
+	make crossdock-logs
 
 .PHONY: build-crossdock-fresh
 build-crossdock-fresh: build-crossdock-linux
